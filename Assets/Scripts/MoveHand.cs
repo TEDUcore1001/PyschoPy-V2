@@ -46,6 +46,7 @@ public class MoveHand : MonoBehaviour
     public bool mission4;
     public bool mission5;
     public bool mission6;
+    public bool objectReleased;
 
     public bool isDone1;
 
@@ -69,6 +70,8 @@ public class MoveHand : MonoBehaviour
         out1 = 60f;
         out2 = 340f;
         out3 = 60f;
+
+        objectReleased = false;
 
         target1 = new Vector3(-1.57f, 4f, 1.4f);
         target2 = new Vector3(1.69f, 4f, -0.7f);
@@ -117,12 +120,8 @@ public class MoveHand : MonoBehaviour
         if (mission2 == false) StartCoroutine(RotateHand());
 
         if (mission2 == true && mission3 == false) StartCoroutine(RotateThumb());
+
         if (mission2 == true && mission4 == false) StartCoroutine(RotateIndex());
-
-        //if (!parent1Changed && mission3 == true && mission4 == true)
-        //{
-
-        //}
 
         if (mission4 == true && mission3 == true && mission5 == false) 
         {
@@ -185,7 +184,7 @@ public class MoveHand : MonoBehaviour
             if (Vector3.Distance(transform.localEulerAngles, to) > minDistance)
             {
 
-                transform.localEulerAngles = Vector3.Slerp(transform.localEulerAngles, to, rotationSpeed);
+                transform.localEulerAngles = Vector3.Slerp(transform.localEulerAngles, to, rotationSpeed/2);
             }
             else
             {
@@ -333,13 +332,20 @@ public class MoveHand : MonoBehaviour
                 transform.position = target2;
                 Debug.Log("Mission 5 Done.");
                 moving = false;
-                pink_square.transform.parent = null;
-                pink_rb.useGravity = true;
-                pink_rb.isKinematic = false;
+                StartCoroutine(ReleaseObject(pink_square, pink_rb));
                 yield return mission5 = true;
             }
         }
 
+    }
+
+    IEnumerator ReleaseObject(GameObject carryingObject, Rigidbody carryingRb)
+    {
+        carryingObject.transform.parent = null;
+        carryingRb.useGravity = true;
+        carryingRb.isKinematic = false;
+
+        yield return objectReleased = true;
     }
 
 
