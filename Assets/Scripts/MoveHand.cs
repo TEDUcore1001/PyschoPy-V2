@@ -5,6 +5,7 @@ using UnityEngine;
 public class MoveHand : MonoBehaviour
 {
     public AnimationCurve _curve;
+    public TimeManager timeManager;
 
     public GameObject hand;
 
@@ -58,6 +59,8 @@ public class MoveHand : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        timeManager = GameObject.FindGameObjectWithTag("Time Manager").GetComponent<TimeManager>();
+
         hand = GameObject.FindGameObjectWithTag("Hand");
         thumb = GameObject.Find("Thumb");
         thumb2 = GameObject.Find("Thumb2");
@@ -127,7 +130,7 @@ public class MoveHand : MonoBehaviour
         {
             StartCoroutine(MoveHandToBase1());
             StartCoroutine(RotateHandToPlace1());
-        } 
+        }
 
         //Debug.Log(_current);
         //Debug.Log(_target);
@@ -344,6 +347,8 @@ public class MoveHand : MonoBehaviour
         carryingObject.transform.parent = null;
         carryingRb.useGravity = true;
         carryingRb.isKinematic = false;
+
+        timeManager.StartTimer();
 
         yield return objectReleased = true;
     }

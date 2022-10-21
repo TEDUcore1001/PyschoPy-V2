@@ -3,7 +3,27 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Table
+  - Hand
+  - pink_square
+  - pink_circle
+  - green_rectangle
+  - orange_square
+  - yellow_rectangle
+  - green_triangle
+  - green_circle
+  - pink_rectangle
+  - orange_rectangle
+  - green_square
+  - yellow_circle
+  - yellow_square
+  - orange_triangle
+  - orange_circle
+  - pink_triangle
+  - yellow_triangle
+  - Game Manager
+  - Time Manager
   layers:
   - Default
   - TransparentFX

@@ -6397,8 +6397,8 @@ GameObject:
   - component: {fileID: 1231465190}
   - component: {fileID: 1231465189}
   m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
+  m_Name: Game Manager
+  m_TagString: Game Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6630,8 +6630,8 @@ GameObject:
   - component: {fileID: 1264730901}
   - component: {fileID: 1264730900}
   m_Layer: 0
-  m_Name: TimeManager
-  m_TagString: Untagged
+  m_Name: Time Manager
+  m_TagString: Time Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6648,6 +6648,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bf67dff17c19ce488da61b8d125388e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timer: 0
+  tempTimer: 0
+  reactionTime: 0
+  counting: 0
 --- !u!4 &1264730901
 Transform:
   m_ObjectHideFlags: 0
